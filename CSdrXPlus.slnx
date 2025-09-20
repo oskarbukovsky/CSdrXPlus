@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="CSdrXPlus.vcxproj" Id="adeb7840-cd59-4cae-8718-ea27c661ac54" />
+</Solution>
