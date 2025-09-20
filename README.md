@@ -6,8 +6,8 @@
 
 ## Použité
 
-[![C++]([[https://img.shields.io/badge/-Java-fff?&logo=Java](https://img.shields.io/badge/-C%2B%2B-fff?&logo=c%2B%2B)](https://img.shields.io/badge/-C%2B%2B-fff?&logo=c%2B%2B))](https://cplusplus.com/)
-[![Visual Studio]([https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white](https://custom-icon-badges.demolab.com/badge/Visual%20Studio-0078d7.svg?logo=vsc&logoColor=white))](https://visualstudio.microsoft.com/)
+[![C++](https://img.shields.io/badge/-C%2B%2B-f55?&logo=c%2B%2B)](https://cplusplus.com/)
+[![Visual Studio](https://custom-icon-badges.demolab.com/badge/Visual%20Studio-0078d7.svg?logo=vsc&logoColor=white)](https://visualstudio.microsoft.com/)
 [![Windows](https://custom-icon-badges.demolab.com/badge/Windows-0078D6?logo=windows11&logoColor=white)](https://www.microsoft.com/windows)
 
 ## Kód
