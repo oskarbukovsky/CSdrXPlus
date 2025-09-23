@@ -66,3 +66,14 @@ void get_terminal_size(int& width, int& height) {
 std::string getCommand(long double frequency, long double buffer_size, int gain) {
 	return std::format("rtl_sdr -f {} -s {} -n 0 -g {} - 2>nul", frequency - (buffer_size / 2 /* I+Q */ / 2 /* Mid */), buffer_size, gain);;
 }
+
+std::string printOutputToString(const std::vector<std::vector<std::string>>& printOutput) {
+	std::ostringstream oss;
+	for (const auto& row : printOutput) {
+		for (const auto& cell : row) {
+			oss << cell;
+		}
+		oss << '\n';
+	}
+	return oss.str();
+}

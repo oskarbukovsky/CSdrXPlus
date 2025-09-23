@@ -29,3 +29,4 @@ void activateVirtualTerminal();
 
 void get_terminal_size(int& width, int& height);
 std::string getCommand(long double frequency, long double buffer_size, int gain);
+std::string printOutputToString(const std::vector<std::vector<std::string>>& printOutput);

@@ -125,10 +125,10 @@ void processBatch(std::unique_ptr<BufferSlot> dataNode) {
 		}
 	}
 	auto now = std::chrono::steady_clock::now();
-	std::cout << "\033[21;" << width - CONTROL_SIZE << "HCalc: " << std::setw(4) << std::setfill(' ') << std::chrono::duration_cast<std::chrono::milliseconds>(now - lastPrint).count() << "ms" << reset;
-	std::cout << "\033[27;" << width - CONTROL_SIZE << "HMaxDb: " << max_dbfs;
-	std::cout << "\033[28;" << width - CONTROL_SIZE << "HMinDb: " << min_dbfs;
-	std::cout << "\033[29;" << width - CONTROL_SIZE << "HAvgDb: " << avg_dbfs;
+	//std::cout << "\033[21;" << width - CONTROL_SIZE << "HCalc: " << std::setw(4) << std::setfill(' ') << std::chrono::duration_cast<std::chrono::milliseconds>(now - lastPrint).count() << "ms" << reset;
+	//std::cout << "\033[27;" << width - CONTROL_SIZE << "HMaxDb: " << max_dbfs;
+	//std::cout << "\033[28;" << width - CONTROL_SIZE << "HMinDb: " << min_dbfs;
+	//std::cout << "\033[29;" << width - CONTROL_SIZE << "HAvgDb: " << avg_dbfs;
 	lastPrint = now;
 }
 
@@ -196,7 +196,7 @@ void sdrReadingThread(const std::string& cmd) {
 		}
 		queue_cv.notify_one();
 		auto now = std::chrono::steady_clock::now();
-		std::cout << "\033[22;" << width - CONTROL_SIZE << "HRead: " << std::setw(4) << std::setfill(' ') << std::chrono::duration_cast<std::chrono::milliseconds>(now - lastRead).count() << "ms" << reset;
+		//std::cout << "\033[22;" << width - CONTROL_SIZE << "HRead: " << std::setw(4) << std::setfill(' ') << std::chrono::duration_cast<std::chrono::milliseconds>(now - lastRead).count() << "ms" << reset;
 		lastRead = now;
 	}
 	pclose(pipe);

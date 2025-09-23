@@ -14,15 +14,34 @@ int main()
 
 	for (auto& t : workers) t.detach();
 
+	std::vector<std::vector<std::string>> printOutput;
+
+	for (int i = 0; i < height; i++) {
+		printOutput.emplace_back();
+		for (int j = 0; j < width; j++) {
+			printOutput[i].emplace_back(" ");
+		}
+	}
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			if (j == 0) {
+				printOutput[i][j] = "\033[" + std::to_string(i) + ";0H";
+			}
+			else {
+			printOutput[i][j] = " ";
+			}
+		}
+	}
+
 	std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now();
-	printOutlines(width, height);
-	printBands(width, bands, frequency, READ_BUFFER_SIZE / 2);
+	printOutlines(printOutput, width, height);
+	//printBands(printOutput, width, bands, frequency, READ_BUFFER_SIZE / 2);
 	int beforeAGC = gain;
 	bool AGC = false;
 	while (!stopFlag) {
-		printFrequency(width, frequency);
-		printWaterfallScale(width, waterfall_min, waterfall_max);
-		printWaterfall(width);
+		//printFrequency(printOutput, width, frequency);
+		//printWaterfallScale(printOutput, width, waterfall_min, waterfall_max);
+		//printWaterfall(printOutput, width);
 		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		auto now = std::chrono::steady_clock::now();
 		std::cout << "\033[20;" << width - CONTROL_SIZE << "HReprint: " << std::setw(4) << std::setfill(' ') << std::chrono::duration_cast<std::chrono::milliseconds>(now - lastTime).count() << "ms";
@@ -105,7 +124,7 @@ int main()
 					if (frequency < 1000000) frequency = 1000000;
 					cmd = getCommand(frequency, READ_BUFFER_SIZE, gain);
 					restartReader = true;
-					printBands(width, bands, frequency, READ_BUFFER_SIZE / 2);
+					printBands(printOutput, width, bands, frequency, READ_BUFFER_SIZE / 2);
 					break;
 				case '3':
 					frequency += 100000; // 100 kHz
@@ -115,11 +134,12 @@ int main()
 					}
 					cmd = getCommand(frequency, READ_BUFFER_SIZE, gain);
 					restartReader = true;
-					printBands(width, bands, frequency, READ_BUFFER_SIZE / 2);
+					printBands(printOutput, width, bands, frequency, READ_BUFFER_SIZE / 2);
 					break;
 				}
 			}
 		}
+		std::cout << printOutputToString(printOutput);
 		std::cout.flush();
 	}
 	std::cout << esc << height + 1 << ";0H" << std::endl;
